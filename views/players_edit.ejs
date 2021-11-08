@@ -1,0 +1,69 @@
+<%- include("partials/header") %>
+<div class="container">
+	<h1>Edit Player</h1>
+	<form action="/players/<%=player._id %>?_method=PUT" method="POST">
+	  <div class="mb-3">
+		<label for="title" class="form-label">Title</label>
+		<input type="text" class="form-control" name="title" value="<%= player.title %>">
+	  </div>
+	  <div class="mb-3">
+		<label for="description" class="form-label">Description</label>
+		<input type="text" class="form-control" name="description" value="<%= player.description %>">
+	  </div>
+	  <div class="mb-3">
+		<label for="role" class="form-label">Role</label>
+		<input type="text" class="form-control" name="role" value="<%= player.role %>">
+	  </div>
+	  <div class="mb-3">
+		<label for="nickname" class="form-label">Nickname</label>
+		<input type="text" class="form-control" name="nickname" value="<%= player.nickname %>">
+	  </div>
+	  <div class="mb-3">
+		<label for="born" class="form-label">Born</label>
+		<input type="date" class="form-control" name="born" value="<%= player.born.toISOString().split('T')[0] %>">
+	  </div>
+	  <div class="mb-3">
+		<label for="batting_style" class="form-label">Batting-Style</label>
+		<input type="text" class="form-control" name="batting_style" value="<%= player.batting_style %>">
+	  </div>
+	  <div class="mb-3">
+		<label for="bowling_style" class="form-label">Bowling-Style</label>
+		<input type="text" class="form-control" name="bowling_style" value="<%= player.bowling_style %>">
+	  </div>
+	  <div class="mb-3">
+		<label for="teams" class="form-label">Teams</label>
+		<input type="text" class="form-control" name="teams" value="<%= player.teams %>">
+	  </div>
+	  <div class="mb-3">
+		<label for="profiles">Profiles</label>
+		<select class= "form-control" id="profiles" name="profiles">
+			<option disabled >--Choose Below--</option>
+			<option <%= player.profiles === 'all format player' ? 'selected' : '' %>>All Format Player</option>
+			<option <%= player.profiles === 'wk-batsman' ? 'selected' : '' %>>WK-Batsman</option>
+			<option <%= player.profiles === 't-20 specialist' ? 'selected' : '' %>>T-20 Specialist</option>
+			<option <%= player.profiles === 'odi specialist' ? 'selected' : '' %>>ODI specialist</option>
+			<option <%= player.profiles === 'test specialist' ? 'selected' : '' %>>test specialist</option>
+			<option <%= player.profiles === 'all-rounders' ? 'selected' : '' %>>All-rounders</option>
+			<option <%= player.profiles === 'batsman' ? 'selected' : '' %>>Batsman</option>
+			<option <%= player.profiles === 'bowlers' ? 'selected' : '' %>>Bowlers</option>
+		 	
+		</select>
+	  </div>
+	  <div class="mb-3">
+		<label for="achievement" class="form-label">Achievement</label>
+		<input type="text" class="form-control" name="achievement" value="<%= player.achievement %>">
+	  </div>
+      <div class="mb-3">
+		<input type="checkbox" class="form-check-input" name="color" <%= player.color ? 'checked' : '' %>>
+		<label for="color">Color?</label>
+	  </div>
+	  <div class="mb-3">
+		<label for="image" class="form-label">Link to image</label>
+		<input type="text" class="form-control" name="image" value="<%= player.image %>">
+	  </div>
+	  <button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+
+
+<%- include("partials/footer") %>

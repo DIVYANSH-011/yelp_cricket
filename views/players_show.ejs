@@ -1,0 +1,89 @@
+<%- include("partials/header") %>
+
+<div class="container">
+	<div class="row mt-4">
+		<div class="col-6 show_image-container">
+			<img src= "<%= player.image %>" >
+		</div>
+		<div class="col-6 show_details-container">
+			<h1><%= player.title %></h1>
+			<p><%= player.description %></p>
+			<table class="table">
+			  <tbody>
+				<tr>
+				  <th scope="row">Role</th>
+				  <td><%= player.role %></td>
+				</tr>
+				<tr>
+				  <th scope="row">Nickname</th>
+				  <td><%= player.nickname %></td>
+				</tr>
+				<tr>
+				  <th scope="row">Born</th>
+				  <td><%= player.born %></td>
+				</tr>
+				<tr>
+				  <th scope="row">Batting-style</th>
+				  <td><%= player.batting_style %></td>
+				</tr>
+				<tr>
+				  <th scope="row">Bowling-style</th>
+				  <td><%= player.bowling_style %></td>
+				</tr>
+				<tr>
+				  <th scope="row">Teams</th>
+				  <td><%= player.teams %></td>
+				</tr>
+				<tr>
+				  <th scope="row">Profiles</th>
+				  <td><%= player.profiles %></td>
+				</tr>
+				<tr>
+				  <th scope="row">Achievement</th>
+				  <td><%= player.achievement %></td>
+				</tr>
+				<tr>
+				  <th scope="row">Color?</th>
+				  <td><%= player.color %></td>
+				</tr>
+			  </tbody>
+			</table>
+			<a href="/players/<%= player._id %>/edit">
+				<button class="btn btn-outline-info btn-lg btn-block mb-2 w-100 p-0">Edit</button>
+			</a>
+			<form action = "/players/<%= player._id %>?_method=DELETE" method = "POST">
+				<button type="submit" class= "btn btn-outline-danger btn-lg btn-block w-100 p-0">Delete</button>
+			</form>
+		</div>
+	</div>
+	<div class="row show_comment-header mt-3">
+		COMMENT HEADER
+	</div>
+	<a href ="/players/<%=player._id %>/comments/new">
+		<button class="btn btn-success btn-lg mt-3 mb-4">Add Comment</button>
+	</a>
+	<% comments.forEach((comment => { %>
+		<div class="row show_comment-container py-2 border">
+			<div class="col-2 border-right my-auto">
+				<%= comment.user.username %>
+			</div>
+			<div class="col-2 border-right my-auto d-flex flex-wrap justify-content-center">
+				<a class="btn btn-sm btn-success w-75 p-0 my-1" href="/players/<%= player._id %>/comments/<%= comment._id%>/edit">
+					Edit
+				</a>
+				<form class ="w-75 my-1" action="/players/<%= player._id %>/comments/<%= comment._id %>?_method=DELETE"method="POST">
+					<button class="btn btn-sm btn-danger w-100 p-0">
+						Delete
+					</button>
+				</form>
+			</div>
+			<div class="col-8 my-auto">
+				<%= comment.text %>
+			</div>
+		</div>
+	<% })) %>
+	<div class="py-5"></div>
+</div>
+
+
+<%- include("partials/footer") %>

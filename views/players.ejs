@@ -1,0 +1,16 @@
+<%- include("partials/header") %>
+		<div class = "container">
+			<div class="row mt-2">
+			  <% players.forEach((player) => { %>
+			      <div class="card m-3">
+					  <a href="/players/<%= player._id %>">
+						  <img class = "card-img card-img-top" src =" <%= player.image %>" alt = "picture of the player">
+					  </a>
+				     <h3 class = "card-title mt-3"><%= player.title %></h3>
+				     <p class = "card-text mb-3 mx-3"><%= player.description %></p>
+			      </div>	
+			  <% }) %>
+			</div>
+			
+		</div>
+<%- include("partials/footer") %>

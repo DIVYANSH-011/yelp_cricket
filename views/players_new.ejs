@@ -1,0 +1,69 @@
+<%- include("partials/header") %>
+<div class="container">
+	<h1>Add New Player</h1>
+	<form action="/players" method="POST">
+	  <div class="mb-3">
+		<label for="title" class="form-label">Title</label>
+		<input type="text" class="form-control" name="title" placeholder="e.g. Ben Stokes"  autofocus>
+	  </div>
+	  <div class="mb-3">
+		<label for="description" class="form-label">Description</label>
+		<input type="text" class="form-control" name="description">
+	  </div>
+	  <div class="mb-3">
+		<label for="role" class="form-label">Role</label>
+		<input type="text" class="form-control" name="role" placeholder="e.g. All-Rounder">
+	  </div>
+	  <div class="mb-3">
+		<label for="nickname" class="form-label">Nickname</label>
+		<input type="text" class="form-control" name="nickname" placeholder="e.g. Stokesy">
+	  </div>
+	  <div class="mb-3">
+		<label for="born" class="form-label">Born</label>
+		<input type="date" class="form-control" name="born">
+	  </div>
+	  <div class="mb-3">
+		<label for="batting_style" class="form-label">Batting-Style</label>
+		<input type="text" class="form-control" name="batting_style" placeholder="e.g. Right Handed Bat">
+	  </div>
+	  <div class="mb-3">
+		<label for="bowling_style" class="form-label">Bowling-Style</label>
+		<input type="text" class="form-control" name="bowling_style" placeholder="e.g. Right-arm medium">
+	  </div>
+	  <div class="mb-3">
+		<label for="teams" class="form-label">Teams</label>
+		<input type="text" class="form-control" name="teams" placeholder="e.g. England , Rajasthan Royals etc..">
+	  </div>
+	  <div class="mb-3">
+		<label for="profiles">Profiles</label>
+		<select class= "form-control" id="profiles" name="profiles">
+			<option disabled selected>--Choose Below--</option>
+			<option>All Format Player</option>
+			<option>WK-Batsman</option>
+			<option>T-20 Specialist</option>
+			<option>ODI specialist</option>
+			<option>test specialist</option>
+			<option>All-rounders</option>
+			<option>Batsman</option>
+			<option>Bowlers</option>
+		 	
+		</select>
+	  </div>
+	  <div class="mb-3">
+		<label for="achievement" class="form-label">Achievement</label>
+		<input type="text" class="form-control" name="achievement" placeholder="e.g. BBC Sports Personality of the Year">
+	  </div>
+      <div class="mb-3">
+		<input type="checkbox" class="form-check-input" name="color">
+		<label for="color">Color?</label>
+	  </div>
+	  <div class="mb-3">
+		<label for="image" class="form-label">Link to image</label>
+		<input type="text" class="form-control" name="image"placeholder="https://www.myimage.com">
+	  </div>
+	  <button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+
+
+<%- include("partials/footer") %>
