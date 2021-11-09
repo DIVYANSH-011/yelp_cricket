@@ -13,7 +13,12 @@ const LocalStrategy = require('passport-local').Strategy;
 const expressSession = require('express-session');
 
 //config Imports 
-const config = require('./config');
+try {
+	var config = require('./config');
+} catch (e) {
+	console.log("Could not import config . This probably means you are not working locally.");
+	console.log(e);
+}
 
 // Route Imports
 const playerRoutes = require('./routes/players');
@@ -34,7 +39,14 @@ app.use(morgan('tiny'))
 
 
 // DB Connection
-mongoose.connect(config.db.connection, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
+try {
+	mongoose.connect(config.db.connection, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
+} catch (e) {
+	console.log("Could not import config . This probably means you are not working locally.");
+	mongoose.connect(process.env.DB_CONNECTION_STRING, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
+}
+
+
 mongoose.Promise = global.Promise;
 
 // Seed the DB
@@ -51,7 +63,7 @@ app.use(express.static('public'));
 
 // Express session config
 app.use(expressSession({
-	secret: "shwdgliugubkgkgewgggiewgiwgw",
+	secret: process.env.ES_SECRET || config.expressSession.secret,
 	resave: false,
 	saveUninitialized: false
 }));
@@ -87,6 +99,6 @@ app.use("/players",playerRoutes);
 app.use("/players/:id/comments", commentRoutes);
 
 // Listen Port
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
 	console.log("yelp_cricket is Running....")
 })
