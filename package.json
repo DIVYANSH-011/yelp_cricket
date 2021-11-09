@@ -4,8 +4,7 @@
   "description": "description here",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-	"test": "node test.js"
+    "start": "node app.js"
   },
   "author": "Divyansh Singh",
   "license": "ISC",
