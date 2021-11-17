@@ -69,10 +69,21 @@ router.get("/search", async (req, res) => {
 	}
 })
 
+// Profiles
+router.get("/profiles/:profiles", async(req, res) => {
+	const validProfiles = ["wk-batsman","all format player","t-20 specialist","odi specialist","test specialist","all-rounders","batsman","bowlers"];
+	if (validProfiles.includes(req.params.profiles.toLowerCase())) {
+		const players = await Player.find({profiles: req.params.profiles}).exec();
+		res.render("players",{players});
+	} else {
+		res.send("Please enter a valid Profile")
+	}
+
+});
 
 
 
-// Find
+// Show
 router.get("/:id", async (req, res) => {
 	try{
 		const player = await Player.findById(req.params.id).exec();
