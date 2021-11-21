@@ -90,9 +90,11 @@ passport.serializeUser(User.serializeUser()); //what data should be stored in se
 passport.deserializeUser(User.deserializeUser());  // get the user data from the stored session
 passport.use(new LocalStrategy(User.authenticate()));   // use the local strategy
 
-// Current User Middleware Config
+//State Config
 app.use((req, res, next) => {
 	res.locals.user = req.user;
+	res.locals.errorMessage = req.flash("error");
+	res.locals.successMessage = req.flash("success");
 	next();
 })
 
