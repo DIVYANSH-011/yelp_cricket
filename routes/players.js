@@ -41,11 +41,11 @@ router.post("/", isLoggedIn, async (req, res) => {
 	}
 	try{
 		const player = await Player.create(newPlayer);
-		console.log(player);
+		req.flash("success", "Player created!" )
 		res.redirect("/players/" + player._id);
 	} catch (err) {
-		console.log(err);
-		res.send("you broke it... /players POST")
+		req.flash("error", "Error creating player")
+		res.redirect("/players");
 	}
 })
 
@@ -120,10 +120,12 @@ router.put("/:id", checkPlayerOwner, async (req, res) => {
 	}
 	try{
 		const player = await Player.findByIdAndUpdate(req.params.id, playerBody, {new: true}).exec();
+		req.flash("success", "\Player updated!")
 		res.redirect(`/players/${req.params.id}`);
 	} catch (err) {
 		console.log(err);
-		res.send("Broken Again.... /players/id PUT");
+		req.flash("error", "Error updating player")
+		res.redirect("/players");
 	}
 })
 
@@ -132,11 +134,12 @@ router.put("/:id", checkPlayerOwner, async (req, res) => {
 router.delete("/:id",  checkPlayerOwner, async (req, res) => {
 	try{
 		const deletedPlayer = await Player.findByIdAndDelete(req.params.id).exec();
-		console.log("Deleted:", deletedPlayer);
+		req.flash("success", "Player deleted!");
 		res.redirect("/players");	
 	} catch (err) {
 		console.log(err);
-		res.send("Brokennnnn.. /players/id DELETE");
+		req.flash("error", "Error deleting player")
+		res.redirect("back");
 	}
 });
 

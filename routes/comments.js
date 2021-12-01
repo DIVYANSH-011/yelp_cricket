@@ -23,11 +23,12 @@ router.post("/", isLoggedIn, async (req, res) => {
 				text: req.body.text,
 				playerId: req.body.playerId
 			});
-			console.log(comment);
+			req.flash("success", "Comment created!");
 			res.redirect(`/players/${req.body.playerId}`)
 	} catch (err) {
 		console.log(err);
-		res.send("Broken again...POST Comments")
+		req.flash("error" , "Error creating comment!");
+		res.redirect("/players")
 	}
 		
 })
@@ -37,12 +38,10 @@ router.get("/:commentId/edit",checkCommentOwner, async (req, res)=> {
 	try{
 		const player  = await Player.findById(req.params.id).exec();
 		const comment = await Comment.findById(req.params.commentId).exec();
-		console.log("player:", player)
-		console.log("comment:", comment)
 		res.render("comments_edit", {player, comment});
 	} catch (err) {
 		console.log(err);
-		res.send("Broke Comment Edit GET")
+		res.redirect("/players");
 	}
 		   
 })
@@ -50,11 +49,12 @@ router.get("/:commentId/edit",checkCommentOwner, async (req, res)=> {
 router.put("/:commentId", checkCommentOwner, async (req, res) => {
 	try{
 		const comment = await Comment.findByIdAndUpdate(req.params.commentId, {text: req.body.text}, {new: true});
-		console.log(comment);
+		req.flash("success", "Comment edited");
 		res.redirect(`/players/${req.params.id}`);	
 	}catch(err) {
 		console.log(err);
-		res.send("Brokkkkeeeee Comment PUT")
+		req.flash("error", "Error editing comment!");
+		res.redirect("/players")
 	}
 })
 
@@ -65,10 +65,12 @@ router.put("/:commentId", checkCommentOwner, async (req, res) => {
 router.delete("/:commentId", checkCommentOwner, async (req, res) => {
 	try{
 		const comment = await Comment.findByIdAndDelete(req.params.commentId);
+		req.flash("success", "Comment deleted!");
 		res.redirect(`/players/${req.params.id}`)
 	}catch(err) {
 		console.log(err);
-		res.send("Broken Again comment DELETE")
+		req.flash("success" , "Error deleting comment");
+		res.redirect("/players")
 	}
 })
 

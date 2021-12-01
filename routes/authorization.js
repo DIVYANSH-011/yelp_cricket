@@ -17,9 +17,7 @@ router.post('/signup', async (req, res) => {
 			username: req.body.username,
 			email: req.body.email
 		}),req.body.password);
-		
-		console.log(newUser);
-		
+		req.flash("success",`signed you as ${newUser.username}`);
 		passport.authenticate('local')(req, res, () => {
 			res.redirect('/players');
 		});
@@ -38,11 +36,15 @@ router.get("/login", (req, res) => {
 // Login
 router.post('/login', passport.authenticate('local', {
 	successRedirect:'/players',
-	failureRedirect:'/login'
+	failureRedirect:'/login',
+	failureFlash: true,
+	successFlash: "Logged in Successfully!"
+	
 }));
 // Logout
 router.get('/logout', (req, res) => {
 	req.logout();
+	req.flash("success" , "Logged You Out!")
 	res.redirect('/players');
 });
 
