@@ -27,5 +27,3 @@ playerSchema.index({
 });
 
 module.exports = mongoose.model("player", playerSchema);
-
-
