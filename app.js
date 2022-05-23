@@ -25,8 +25,8 @@ try {
 const playerRoutes = require('./routes/players');
 const commentRoutes = require('./routes/comments');
 const mainRoutes = require('./routes/main');
+const trialRoutes = require('./routes/trial');
 const authRoutes = require('./routes/authorization');
-const trialsRoutes = require('./routes/trials');
 
 // Model Imports
 const Player = require('./models/player');
@@ -106,8 +106,10 @@ app.use((req, res, next) => {
 app.use("/", mainRoutes);
 app.use("/", authRoutes);
 app.use("/players",playerRoutes);
+app.use("/trial", trialRoutes);
 app.use("/players/:id/comments", commentRoutes);
-app.use("/trials", trialsRoutes);
+
+
 
 // Listen Port
 app.listen(process.env.PORT || 3000, () => {
