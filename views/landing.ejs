@@ -1,4 +1,35 @@
-<h1> Landing Page</h1>
-<button type="submit"class="btn btn-primary">
-	Click Here
-</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+	var seconds = 0;
+	function displaysecs()
+	{
+		seconds = seconds + 1;
+		if (seconds < 10)
+		{
+			seconds = "0" + seconds;
+		}
+		document.getElementById("timer").innerHTML = seconds;
+		setTimeout("displaysecs()", 1000);
+	}
+	setInterval(displaysecs, 1000);
+
+	function redirectpage()
+	{
+		window.location.href = "/players";
+	}
+	setTimeout(redirectpage, 4000);
+</script>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div id="displaysecs" style="text-align:center">
+		<h2>You will be redirected to the home page </h2>
+		<img src = "../../public/img/loading.gif" alt = "loading" style="width:100px;height:100px;">
+
+	
+</body>
+</html>
