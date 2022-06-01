@@ -17,6 +17,7 @@ router.get("/", async (req,res) => {
 	}
 })
 
+
 // Create
 router.post("/", isLoggedIn, async (req, res) => {
 	const profiles = req.body.profiles.toLowerCase();
@@ -53,6 +54,7 @@ router.post("/", isLoggedIn, async (req, res) => {
 router.get("/new", isLoggedIn, (req, res) => {
 	res.render("players_new");
 })
+
 
 // Search
 router.get("/search", async (req, res) => {

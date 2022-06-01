@@ -21,11 +21,15 @@ try {
 	console.log(e);
 }
 
+
 // Route Imports
 const playerRoutes = require('./routes/players');
 const commentRoutes = require('./routes/comments');
 const mainRoutes = require('./routes/main');
 const authRoutes = require('./routes/authorization');
+const trialRoutes = require('./routes/trials');
+
+
 
 
 // Model Imports
@@ -105,6 +109,7 @@ app.use((req, res, next) => {
 // Use Routes
 app.use("/", mainRoutes);
 app.use("/", authRoutes);
+app.usee("/trials", trialRoutes);
 app.use("/players",playerRoutes);
 app.use("/players/:id/comments", commentRoutes);
 

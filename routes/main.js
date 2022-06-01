@@ -11,6 +11,10 @@ router.get("/account", isLoggedIn, (req, res) => {
 	res.render("account");
 });
 
+router.get('/trials', (req, res) => {
+	res.render('trials');
+});
+
 
 
 
