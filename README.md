@@ -5,4 +5,4 @@ but before clone my code to your system make sure you have environment setup of 
 install nodejs latest version.
 make one config.js
 put secret_key inside config.js.
-made db connection in 
+made db connection and
