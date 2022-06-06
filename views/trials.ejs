@@ -1,0 +1,22 @@
+<%- include("partials/header") %>
+<div class="container">
+	<h1>Trials</h1>
+	<form action="/trials" method="POST">
+	  <div class="mb-3">
+		<label for="title" class="form-label">Title</label>
+		<input type="text" class="form-control" name="title" placeholder="e.g. Ben Stokes"  autofocus>
+	  </div>
+	  <div class="mb-3">
+		<label for="description" class="form-label">Description</label>
+		<input type="text" class="form-control" name="description">
+	  </div>
+	  <div class="mb-3">
+		<label for="role" class="form-label">Role</label>
+		<input type="text" class="form-control" name="role" placeholder="e.g. All-Rounder">
+	  </div>
+	  <button type="submit" class="btn btn-primary">Submit</button>
+	</form>
+</div>
+
+
+<%- include("partials/footer") %>
