@@ -3,4 +3,4 @@ In this project we can see information of each and every cricket player as I am 
 # Steps to start the Website in your localhost.
 // Clone the repo on your local system.
 // Make one file named congif.js.
-// INSIDE
+// INSIDE CONFIGJS
