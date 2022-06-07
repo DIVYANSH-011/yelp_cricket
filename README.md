@@ -6,3 +6,4 @@ In this project we can see information of each and every cricket player as I am 
 // INSIDE CONFIGJS
 // 1. Database connection 
 // 2. PORT
+// 3. Secret key
