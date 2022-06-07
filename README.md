@@ -4,4 +4,5 @@ In this project we can see information of each and every cricket player as I am 
 // Clone the repo on your local system.
 // Make one file named congif.js.
 // INSIDE CONFIGJS
-// 1. Database connection
+// 1. Database connection 
+// 2. PORT
