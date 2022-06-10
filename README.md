@@ -7,4 +7,4 @@ In this project we can see information of each and every cricket player as I am 
 // 1. Database connection (username)
 // 2. PORT
 // 3. Secret key
-// 4. DB-(user)
+// 4. DB-(username)
